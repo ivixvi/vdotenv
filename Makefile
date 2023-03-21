@@ -6,23 +6,26 @@ setup:
 
 ## Update module document
 doc:
-	v doc -o docs -f markdown .
+	v doc -o docs/ -f markdown .
+	mv docs/.md docs/vdotenv.md
 
 ## Run test
-test:
-	v test .
+test: vdotenv_test.v
+	cp testdata/.env testdata/.env.parse .
+	v test vdotenv_test.v
+	rm .env .env.parse
 
 ## Report suspicious code constructs.
 vet:
-	v vet *.v
+	v vet .
 
 ## Format .v files
-format:
-	v fmt -w *.v
+fmt:
+	v fmt -w .
 
 ## Clean repository
 clean:
-	rm vdotenv_test
+	rm .env .env.parse
 
 ## Show help
 help:

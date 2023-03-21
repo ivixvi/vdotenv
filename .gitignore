@@ -8,4 +8,8 @@ vdotenv_test.exe
 *.so
 *.dylib
 *.dll
-.env
+
+examples/parse
+*.zztkm.vdotenv.md
+
+vls.log
